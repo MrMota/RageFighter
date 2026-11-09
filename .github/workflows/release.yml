@@ -26,6 +26,12 @@ jobs:
           KS: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           PW: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
         run: |
+          # Diagnostics only: lengths and character checks, never the values.
+          CLEAN=$(printf '%s' "$KS" | tr -d ' \r\n\t')
+          echo "ANDROID_KEYSTORE_BASE64: ${#KS} chars as stored, ${#CLEAN} after removing whitespace (expected 5720)"
+          BAD=$(printf '%s' "$CLEAN" | tr -d 'A-Za-z0-9+/=' | wc -c)
+          echo "ANDROID_KEYSTORE_BASE64: $BAD characters that are not valid base64 (expected 0)"
+          echo "ANDROID_KEYSTORE_PASSWORD: ${#PW} chars (expected 24)"
           if [ -z "$KS" ] || [ -z "$PW" ]; then
             echo "::error::Add ANDROID_KEYSTORE_BASE64 and ANDROID_KEYSTORE_PASSWORD in Settings > Secrets and variables > Actions."
             exit 1
