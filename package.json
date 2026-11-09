@@ -1,0 +1,19 @@
+{
+  "name": "ragefighter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RageFighter - an original 2D arcade fighting game (PWA + Android)",
+  "scripts": {
+    "serve": "python3 -m http.server 8080 --directory www",
+    "android:add": "cap add android",
+    "android:sync": "cap sync android",
+    "android:build": "cap sync android && cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/core": "^6.2.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0"
+  }
+}

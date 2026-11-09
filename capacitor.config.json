@@ -1,0 +1,6 @@
+{
+  "appId": "com.mrmota.ragefighter",
+  "appName": "RageFighter",
+  "webDir": "www",
+  "android": { "backgroundColor": "#120c24" }
+}

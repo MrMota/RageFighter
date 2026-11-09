@@ -1,0 +1,20 @@
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; height: 100%; background: #07050f; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; }
+body { display: flex; align-items: center; justify-content: center; font-family: system-ui, sans-serif; }
+canvas { display: block; image-rendering: auto; }
+#pauseBtn { position: fixed; top: max(8px, env(safe-area-inset-top)); left: 50%; transform: translate(-50%, 64px); width: 40px; height: 32px; border-radius: 8px; border: 2px solid #fff4; background: #0008; color: #fff; font-weight: 900; display: none; }
+body.fighting #pauseBtn { display: block; }
+#touch { position: fixed; inset: 0; pointer-events: none; display: none; }
+#touch.show { display: block; }
+#stick { position: absolute; left: max(24px, env(safe-area-inset-left)); bottom: 28px; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(#fff2, #fff1 60%, #fff3 61%, #0000 70%); pointer-events: auto; }
+#knob { position: absolute; left: 45px; top: 45px; width: 60px; height: 60px; border-radius: 50%; background: #ffffff55; border: 3px solid #fff9; }
+#buttons { position: absolute; right: max(20px, env(safe-area-inset-right)); bottom: 22px; width: 230px; height: 170px; pointer-events: none; }
+.btn { position: absolute; width: 66px; height: 66px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 900 15px system-ui, sans-serif; color: #fff; border: 3px solid #fffa; pointer-events: auto; text-shadow: 0 1px 2px #000; opacity: .8; }
+.btn.down { transform: scale(.9); opacity: 1; filter: brightness(1.4); }
+.btn.lp { left: 20px; top: 20px; background: #3f7dffaa; }
+.btn.hp { left: 96px; top: 0; background: #ff5f5faa; }
+.btn.lk { left: 40px; top: 96px; background: #3fd1a5aa; }
+.btn.hk { left: 116px; top: 76px; background: #ffb13faa; }
+.btn.rage { left: 168px; top: -66px; width: 58px; height: 58px; font-size: 11px; background: #a64dffcc; }
+#rotate { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: #120c24; color: #fff; font: 700 22px system-ui, sans-serif; text-align: center; padding: 20px; z-index: 10; }
+body.portrait #rotate { display: flex; }
