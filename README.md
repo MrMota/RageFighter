@@ -33,7 +33,13 @@ npm run serve        # http://localhost:8080
 Pushing to `main` deploys `www/` to GitHub Pages (`.github/workflows/pages.yml`). To turn this on, open Settings → Pages and set the Source to "GitHub Actions".
 
 ## Build the APK
-**On GitHub (no local setup):** every push runs `.github/workflows/android.yml`. Download `RageFighter-apk` from the run's Artifacts. Pushing a tag such as `v1.0.0` also attaches `RageFighter.apk` to a GitHub Release.
+**Signed release (for sharing):** push a version tag, and `.github/workflows/release.yml` builds a signed APK and publishes it on the **Releases** page:
+```bash
+git tag v1.0.1 && git push origin v1.0.1
+```
+You can also start it from Actions → "Release signed APK" → Run workflow. It needs two repository secrets (Settings → Secrets and variables → Actions): `ANDROID_KEYSTORE_BASE64` and `ANDROID_KEYSTORE_PASSWORD`. Keep a backup of the keystore. Android only installs updates signed with the same key.
+
+**Test builds:** every push runs `.github/workflows/android.yml`. Download the debug `RageFighter-apk` from the run's Artifacts.
 
 **Locally** (needs the Android SDK and JDK 17):
 ```bash
