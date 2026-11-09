@@ -40,7 +40,13 @@ jobs:
 
       - name: Build debug APK
         working-directory: android
-        run: ./gradlew assembleDebug --no-daemon
+        # Retry: the Gradle download occasionally hits transient server errors (e.g. 504).
+        run: |
+          for i in 1 2 3 4; do
+            ./gradlew assembleDebug --no-daemon && exit 0
+            echo "Build attempt $i failed, retrying in $((i * 15))s..."; sleep $((i * 15))
+          done
+          exit 1
 
       - name: Rename APK
         run: cp android/app/build/outputs/apk/debug/app-debug.apk RageFighter.apk
