@@ -45,4 +45,7 @@ for d in mdpi hdpi xhdpi xxhdpi xxxhdpi; do
   cp android-res/ic_launcher_round-$d.png $M/res/mipmap-$d/ic_launcher_round.png
   rm -f $M/res/mipmap-$d/ic_launcher_foreground.png
 done
+# Gradle download: smaller "-bin" distribution and a 2-minute timeout (default 10s causes flaky CI)
+W=android/gradle/wrapper/gradle-wrapper.properties
+sed -i 's/-all\.zip/-bin.zip/; s/^networkTimeout=.*/networkTimeout=120000/' $W
 echo "Android project patched."
