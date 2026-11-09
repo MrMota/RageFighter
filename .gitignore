@@ -4,4 +4,4 @@ android/
 .DS_Store
 *.jks
 *.keystore
-signing-secrets*
+signing-secret*
